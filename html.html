@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+<h1>Aplicación de Alarmas</h1>
+<button id="toggleButton" class="button">Prender Alarma</button>
+<p></p>
+<button id="addAlarm" class="add-alarm">+</button>
+<div id="dialog" class="dialog">
+<div class="dialog-content">
+<span class="close">&times;</span>
+<h2>Programar Alarma</h2>
+<label for="time">Seleccione la hora</label>
+<input type="time" id="time" required>
+<p></p>
+<label>Días de la semana:</label>
+<div class="checkbox-group">
+<label><input type="checkbox" value="0"> Lunes</label>
+<label><input type="checkbox" value="1"> Martes</label>                    
+<label><input type="checkbox" value="2"> Miércoles</label>
+<label><input type="checkbox" value="3"> Jueves</label>
+<label><input type="checkbox" value="4"> Viernes</label>
+</div>
+<label for="permanent">Alarma permanente:</label>
+<input type="checkbox" id="permanent">
+<button id="setSound">Programar Sonido</button>
+</div>        
+</div>
+<div id="alarmList"></div>
+</div>
+<audio id="alarmAudio" src="alarma.mp3" preload="auto" controls=""></audio>
+<script type="sevice-worker.js"></script>
+<script src="script.js"></script>
+<script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registrado con éxito:', registration);
+                })
+                .catch(error => {
+                    console.log('Error al registrar el Service Worker:', error);
+                });
+        }
+    </script>
+
+</body>
+</html>
